@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
 @Component({
   selector: 'app-login',
   standalone: true,
