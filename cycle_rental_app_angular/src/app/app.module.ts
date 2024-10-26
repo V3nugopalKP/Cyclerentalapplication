@@ -2,46 +2,46 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { registerLocaleData } from '@angular/common'; // Import registerLocaleData
-import en from '@angular/common/locales/en'; // Import English locale
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
 
 // NG ZORRO IMPORTS
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n'; // Import NZ_I18N and en_US
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';  // Ensure this is imported
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 // Import your components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
-import { AppRoutingModule } from './app-routing.module'; // Import your routing module
+import { AppRoutingModule } from './app-routing.module';
 
 // Registering English Locale
-registerLocaleData(en); // Register the English locale
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
-
-    // Add any other components here
+    
+    // Add other components here
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, // Import AppRoutingModule here
+    AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    NzLayoutModule, // Ensure this is included
     NzSpinModule,
     NzButtonModule,
     NzInputModule,
-    NzLayoutModule,
+    NzFormModule,
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US }, // Use NZ_I18N for NG ZORRO localization
+    { provide: NZ_I18N, useValue: en_US },
   ],
-  bootstrap: [], // Bootstrap the main AppComponent
+  bootstrap: [], // Bootstrap your main AppComponent
 })
 export class AppModule {}
