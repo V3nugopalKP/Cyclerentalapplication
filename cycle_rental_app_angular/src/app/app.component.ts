@@ -4,6 +4,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { StorageService } from './auth/services/storage/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +18,30 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   title = 'cycle_rental_app_angular';
-  
+
+  isCustomerLoggedIn: boolean = StorageService.isCustomerLoggedIn();
+  isAdminLoggedIn: boolean = StorageService.isAdminLoggedIn();
+
   constructor(private router: Router) {}
 
-  // The navigateToLogin function exists now
-  navigateToLogin() {
-    this.router.navigate(['/login']); // Navigate to the login page
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event.constructor.name === "NavigationEnd") {
+        this.isAdminLoggedIn = StorageService.isAdminLoggedIn();
+        this.isCustomerLoggedIn = StorageService.isCustomerLoggedIn();
+      }
+    });
   }
+
+  logout() {
+    StorageService.logout();
+    this.router.navigateByUrl("/login");
+  }
+
+  
+  
+  
+
+
+
 }
