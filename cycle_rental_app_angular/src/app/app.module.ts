@@ -7,17 +7,14 @@ import en from '@angular/common/locales/en';
 
 // NG ZORRO IMPORTS
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';  // Ensure this is imported
-import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzFormModule } from 'ng-zorro-antd/form';
+
 
 // Import your components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NgZorroImportsModule } from './NgZorroImportsModule';
 
 // Registering English Locale
 registerLocaleData(en);
@@ -32,11 +29,7 @@ registerLocaleData(en);
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NzLayoutModule, // Ensure this is included
-    NzSpinModule,
-    NzButtonModule,
-    NzInputModule,
-    NzFormModule,
+    NgZorroImportsModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
