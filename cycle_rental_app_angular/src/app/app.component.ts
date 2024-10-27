@@ -5,11 +5,12 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { StorageService } from './auth/services/storage/storage.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,NzFormModule,NzButtonModule,RouterModule],
+  imports: [RouterOutlet,NzFormModule,NzButtonModule,RouterModule,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

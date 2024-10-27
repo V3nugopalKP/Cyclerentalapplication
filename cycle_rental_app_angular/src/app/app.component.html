@@ -2,7 +2,7 @@
 <!-- <a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
   <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
 </a> -->
-<div *ngif = "!isAdminLoggedIn">
+<div *ngIf = "!isAdminLoggedIn">
     <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
         <div class="navbar-title">
             <a routerLink="/login">Cycle Rental Service</a>
@@ -14,7 +14,7 @@
     </nz-header>
   </div>
 
-  <div *ngif = "isAdminLoggedIn">
+  <div *ngIf = "isAdminLoggedIn">
     <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
         <div class="navbar-title">
             <a routerLink="/login">Cycle Rental Service</a>
@@ -26,13 +26,13 @@
     </nz-header>
 
   </div>
-  <div *ngif = "isCustomerLoggedIn">
+  <div *ngIf = "isCustomerLoggedIn">
     <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
         <div class="navbar-title">
             <a routerLink="/login">Cycle Rental Service</a>
         </div>
         <div class="nav-links">
-            <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Sign Up</a>
+            <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
             <a nz-button nzType="link" (click) = "logout()" routerLinkActive="active">Login</a>
         </div>
     </nz-header>

@@ -10,49 +10,58 @@ export class StorageService {
 
   constructor() { }
 
+  private static isWindowDefined(): boolean {
+    return typeof window !== 'undefined';
+  }
+
   static saveToken(token: string): void {
-    window.localStorage.removeItem(TOKEN);
-    window.localStorage.setItem(TOKEN, token);
+    if (this.isWindowDefined()) {
+      window.localStorage.removeItem(TOKEN);
+      window.localStorage.setItem(TOKEN, token);
+    }
   }
 
   static saveUser(user: any): void {
-    window.localStorage.removeItem(USER);
-    window.localStorage.setItem(USER, JSON.stringify(user));
+    if (this.isWindowDefined()) {
+      window.localStorage.removeItem(USER);
+      window.localStorage.setItem(USER, JSON.stringify(user));
+    }
   }
 
-  static getToken() {
-    return window.localStorage.getItem(TOKEN);
+  static getToken(): string | null {
+    return this.isWindowDefined() ? window.localStorage.getItem(TOKEN) : null;
   }
 
   static getUser(): any | null {
-    const user = localStorage.getItem(USER);
+    if (!this.isWindowDefined()) return null;
+    
+    const user = window.localStorage.getItem(USER);
     return user ? JSON.parse(user) : null;  // Handle null case before parsing
   }
 
   static getUserRole(): string {
     const user = this.getUser();
-    if (user === null) return '';
-    return user.role;
+    return user ? user.role : '';
   }
 
   static isAdminLoggedIn(): boolean {
     if (this.getToken() == null) return false;
 
     const role: string = this.getUserRole();
-    return role == "ADMIN";
+    return role === "ADMIN";
   }
 
   static isCustomerLoggedIn(): boolean {
     if (this.getToken() == null) return false;
 
     const role: string = this.getUserRole();
-    return role == "CUSTOMER";
+    return role === "CUSTOMER";
   }
 
   static logout(): void {
-    window.localStorage.removeItem(TOKEN);
-    window.localStorage.removeItem(USER);
+    if (this.isWindowDefined()) {
+      window.localStorage.removeItem(TOKEN);
+      window.localStorage.removeItem(USER);
+    }
   }
-
-
 }
