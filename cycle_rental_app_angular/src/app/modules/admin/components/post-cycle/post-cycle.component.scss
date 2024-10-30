@@ -1,0 +1,259 @@
+/* Parent and Child Layout */
+.parent {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6f86d6, #48c6ef);
+}
+
+.child {
+  padding: 50px;
+  width: 100%;
+  max-width: 680px;
+  background-color: white;
+  box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Image and Profile Badge */
+.imgDiv {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile {
+  height: 180px;
+  width: 180px;
+  margin-bottom: 5px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Upload Icon */
+.upload-label {
+  cursor: pointer;
+}
+
+.upload-icon {
+  width: 70px;
+  height: 35px;
+  margin-top: 10px;
+}
+
+/* Button Styles */
+button {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Login Button */
+.login-form-button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.login-form-button:hover {
+  background-color: #218838;
+}
+
+/* Input Fields */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Error Messages */
+.error-message {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+input.error {
+  border-color: #ff4d4d;
+}
+
+/* Card Component */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.card-body {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p, label {
+  font-family: 'Arial', sans-serif;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scale-up {
+  transform: scale(0.9);
+  animation: scaleUp 0.3s forwards;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .child {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .profile {
+    height: 120px;
+    width: 120px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile {
+    height: 100px;
+    width: 100px;
+  }
+
+  .upload-icon {
+    width: 50px;
+    height: 25px;
+  }
+}
