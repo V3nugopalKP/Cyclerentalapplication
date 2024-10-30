@@ -60,12 +60,11 @@ export class PostCycleComponent {
     formData.append('brand', this.postCycleForm.get('brand')?.value);
     formData.append('name', this.postCycleForm.get('name')?.value);
     formData.append('type', this.postCycleForm.get('type')?.value);
-    formData.append('color', this.postCycleForm.get('color')?.value);
-    formData.append('year', this.postCycleForm.get('year')?.value);
     formData.append('transmission', this.postCycleForm.get('transmission')?.value);
-    formData.append('price', this.postCycleForm.get('price')?.value);
+    formData.append('color', this.postCycleForm.get('color')?.value);
+    formData.append('year', this.postCycleForm.get('year')?.value);    
     formData.append('description', this.postCycleForm.get('description')?.value);
-    
+    formData.append('price', this.postCycleForm.get('price')?.value);
 
     console.log(formData);
 
@@ -81,7 +80,6 @@ export class PostCycleComponent {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
-    this.postCycleForm.patchValue({ image: this.selectedFile });
     this.previewImage();
   }
   

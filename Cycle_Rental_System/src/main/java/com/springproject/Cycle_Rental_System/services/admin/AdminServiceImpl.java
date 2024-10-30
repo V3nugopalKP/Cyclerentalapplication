@@ -25,8 +25,10 @@ public class AdminServiceImpl implements AdminService {
 	        cycle.setColor(cycleDto.getColor());
 	        cycle.setYear(cycleDto.getYear());
 	        cycle.setType(cycleDto.getType());
+			cycle.setTransmission(cycleDto.getTransmission());
 	        cycle.setDescription(cycleDto.getDescription());
 	        cycle.setImage(cycleDto.getImage().getBytes());
+			
 	        cycleRepository.save(cycle);
 	        return true;
 	    } catch (Exception e) {

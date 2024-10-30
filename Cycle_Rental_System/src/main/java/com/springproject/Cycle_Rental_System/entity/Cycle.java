@@ -24,6 +24,8 @@ public class Cycle {
     
     private String type;
 
+    private String transmission;
+
     
     private String description;
 
