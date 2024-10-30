@@ -7,10 +7,11 @@ import { AuthService } from '../../services/auth/auth.service';
 import { StorageService } from '../../services/storage/storage.service';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NzSpinModule,NzButtonModule,NzFormModule,ReactiveFormsModule],
+  imports: [NzSpinModule,NzButtonModule,NzFormModule,ReactiveFormsModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

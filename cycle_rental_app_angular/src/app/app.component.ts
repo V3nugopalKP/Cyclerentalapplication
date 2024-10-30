@@ -10,14 +10,15 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
+<<<<<<< HEAD
   imports: [RouterOutlet,NzFormModule,NzButtonModule,RouterModule,CommonModule],
+=======
+  imports: [RouterOutlet, NzFormModule, NzButtonModule, RouterModule, CommonModule], // Added CommonModule
+>>>>>>> f7624bb (Fifth commit)
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
-
-
 export class AppComponent {
-
   title = 'cycle_rental_app_angular';
 
   isCustomerLoggedIn: boolean = StorageService.isCustomerLoggedIn();
@@ -38,11 +39,4 @@ export class AppComponent {
     StorageService.logout();
     this.router.navigateByUrl("/login");
   }
-
-  
-  
-  
-
-
-
 }

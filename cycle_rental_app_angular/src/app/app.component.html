@@ -2,7 +2,11 @@
 <!-- <a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
   <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
 </a> -->
+<<<<<<< HEAD
 <div *ngIf = "!isAdminLoggedIn">
+=======
+<div *ngIf="!isAdminLoggedIn">
+>>>>>>> f7624bb (Fifth commit)
     <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
         <div class="navbar-title">
             <a routerLink="/login">Cycle Rental Service</a>
@@ -12,29 +16,44 @@
             <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Logout</a>
         </div>
     </nz-header>
-  </div>
+</div>
 
+<<<<<<< HEAD
   <div *ngIf = "isAdminLoggedIn">
+=======
+<div *ngIf="isAdminLoggedIn">
+>>>>>>> f7624bb (Fifth commit)
     <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
         <div class="navbar-title">
             <a routerLink="/login">Cycle Rental Service</a>
         </div>
         <div class="nav-links">
             <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
-            <a nz-button nzType="link" (click) = "logout()"  routerLinkActive="active">Logout</a>
+            <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
         </div>
     </nz-header>
+</div>
 
+<<<<<<< HEAD
   </div>
   <div *ngIf = "isCustomerLoggedIn">
+=======
+<div *ngIf="isCustomerLoggedIn">
+>>>>>>> f7624bb (Fifth commit)
     <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
         <div class="navbar-title">
             <a routerLink="/login">Cycle Rental Service</a>
         </div>
         <div class="nav-links">
+<<<<<<< HEAD
             <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
             <a nz-button nzType="link" (click) = "logout()" routerLinkActive="active">Login</a>
+=======
+            <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Sign Up</a>
+            <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Login</a>
+>>>>>>> f7624bb (Fifth commit)
         </div>
     </nz-header>
-  </div> 
+</div>
+
 <router-outlet></router-outlet>
