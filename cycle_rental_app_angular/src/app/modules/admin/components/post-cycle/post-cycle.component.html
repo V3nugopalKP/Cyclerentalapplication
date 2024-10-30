@@ -24,7 +24,8 @@
                                     <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
                                         <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Brand Name"
                                             formControlName = "brand">
-                                            <nz-option *ngFor="let brand of listOfBrands" nzLabel="{{ brand }}" [nzValue]="brand"></nz-option>
+                                            <nz-option *ngFor=" let brand of listOfBrands" nzLabel="{{ brand }}" 
+                                            [nzValue]="brand"></nz-option>
                                         </nz-select>
                                     </nz-form-control>
                                 </nz-form-item>

@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
+
+
 import en from '@angular/common/locales/en';
 
 // NG ZORRO IMPORTS
@@ -33,6 +35,7 @@ registerLocaleData(en);
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
+    
   ],
   bootstrap: [], // Bootstrap your main AppComponent
 })

@@ -63,23 +63,25 @@ export class PostCycleComponent {
     formData.append('color', this.postCycleForm.get('color')?.value);
     formData.append('year', this.postCycleForm.get('year')?.value);
     formData.append('transmission', this.postCycleForm.get('transmission')?.value);
-    formData.append('description', this.postCycleForm.get('description')?.value);
     formData.append('price', this.postCycleForm.get('price')?.value);
+    formData.append('description', this.postCycleForm.get('description')?.value);
+    
 
     console.log(formData);
 
     this.adminService.postCycle(formData).subscribe(res => {
       this.isSpinning = false;
-      this.message.success("Car posted successfully", { nzDuration: 5000 });
+      this.message.success("Cycle posted successfully", { nzDuration: 5000 });
       this.router.navigateByUrl("/admin/dashboard");
       console.log(res);
     }, error => {
-      this.message.error("Error while posting car", { nzDuration: 5000 });
+      this.message.error("Error while posting cycle", { nzDuration: 5000 });
     });
   }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    this.postCycleForm.patchValue({ image: this.selectedFile });
     this.previewImage();
   }
   
