@@ -56,15 +56,15 @@ export class PostCycleComponent {
     this.isSpinning = true;
     const formData: FormData = new FormData();
 
-    formData.append('image', this.selectedFile);
-    formData.append('brand', this.postCycleForm.get('brand').value);
-    formData.append('name', this.postCycleForm.get('name').value);
-    formData.append('type', this.postCycleForm.get('type').value);
-    formData.append('color', this.postCycleForm.get('color').value);
-    formData.append('year', this.postCycleForm.get('year').value);
-    formData.append('transmission', this.postCycleForm.get('transmission').value);
-    formData.append('description', this.postCycleForm.get('description').value);
-    formData.append('price', this.postCycleForm.get('price').value);
+    formData.append('image', this.postCycleForm.get('image')?.value);
+    formData.append('brand', this.postCycleForm.get('brand')?.value);
+    formData.append('name', this.postCycleForm.get('name')?.value);
+    formData.append('type', this.postCycleForm.get('type')?.value);
+    formData.append('color', this.postCycleForm.get('color')?.value);
+    formData.append('year', this.postCycleForm.get('year')?.value);
+    formData.append('transmission', this.postCycleForm.get('transmission')?.value);
+    formData.append('description', this.postCycleForm.get('description')?.value);
+    formData.append('price', this.postCycleForm.get('price')?.value);
 
     console.log(formData);
 

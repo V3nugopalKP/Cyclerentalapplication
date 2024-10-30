@@ -21,7 +21,7 @@ public class AdminController {
 	private final AdminService adminService;
 
     @PostMapping("/cycle")
-    public ResponseEntity<?> postCar(@ModelAttribute CycleDto cycleDto) throws IOException {
+    public ResponseEntity<?> postCycle(@ModelAttribute CycleDto cycleDto) throws IOException {
         boolean success = adminService.postCycle(cycleDto);
 
         if (success) {

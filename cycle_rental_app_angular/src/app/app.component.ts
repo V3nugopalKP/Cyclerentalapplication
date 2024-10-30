@@ -10,11 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-<<<<<<< HEAD
-  imports: [RouterOutlet,NzFormModule,NzButtonModule,RouterModule,CommonModule],
-=======
   imports: [RouterOutlet, NzFormModule, NzButtonModule, RouterModule, CommonModule], // Added CommonModule
->>>>>>> f7624bb (Fifth commit)
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

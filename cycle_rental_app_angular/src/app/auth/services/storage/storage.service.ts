@@ -64,8 +64,4 @@ export class StorageService {
       window.localStorage.removeItem(USER);
     }
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> f7624bb (Fifth commit)
