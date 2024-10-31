@@ -11,6 +11,8 @@ import { AdminService } from '../../services/admin.service';
 export class AdminDashboardComponent {
   constructor(private adminService: AdminService) {}
 
+  cycles : any = []
+
   ngOnInit() {
     this.getAllCycles();
   }
@@ -19,7 +21,7 @@ export class AdminDashboardComponent {
     this.adminService.getAllCycles().subscribe(res => {
       console.log(res);
   
-      res.forEach(element => {
+      res.forEach((element: { processedImg: string; returnedImage: string; }) => {
         element.processedImg = 'data:image/jpeg;base64,' + element.returnedImage;
         this.cycles.push(element);
       });
