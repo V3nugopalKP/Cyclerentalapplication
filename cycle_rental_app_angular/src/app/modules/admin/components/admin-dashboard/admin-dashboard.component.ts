@@ -12,12 +12,17 @@ export class AdminDashboardComponent {
   constructor(private adminService: AdminService) {}
 
   ngOnInit() {
-    this.getAllCars();
+    this.getAllCycles();
   }
 
-  getAllCars() {
-    this.adminService.getAllCycles().subscribe((res) => {
+  getAllCycles() {
+    this.adminService.getAllCycles().subscribe(res => {
       console.log(res);
+  
+      res.forEach(element => {
+        element.processedImg = 'data:image/jpeg;base64,' + element.returnedImage;
+        this.cycles.push(element);
+      });
     });
   }
 }
