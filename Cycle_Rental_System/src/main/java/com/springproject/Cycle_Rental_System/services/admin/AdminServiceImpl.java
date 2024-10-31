@@ -1,6 +1,9 @@
 package com.springproject.Cycle_Rental_System.services.admin;
 
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.springproject.Cycle_Rental_System.dto.CycleDto;
@@ -35,6 +38,11 @@ public class AdminServiceImpl implements AdminService {
 	    } catch (Exception e) {
 	        return false;
 	    }
+	}
+
+	@Override
+	public List<CycleDto> getAllCycles() {
+	    return cycleRepository.findAll().stream().map(Cycle::getCycleDto).collect(Collectors.toList());
 	}
 	
 
