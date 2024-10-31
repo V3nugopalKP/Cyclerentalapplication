@@ -22,6 +22,12 @@ export class AdminService {
     });
   }
 
+  deleteCycle(id: number): Observable<any> {
+    return this.http.delete(BASIC_URL + "/api/admin/cycle/" + id, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(

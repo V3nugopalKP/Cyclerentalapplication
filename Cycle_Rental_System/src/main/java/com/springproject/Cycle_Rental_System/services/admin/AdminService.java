@@ -7,5 +7,6 @@ import com.springproject.Cycle_Rental_System.dto.CycleDto;
 public interface AdminService {
 	boolean postCycle(CycleDto cycleDto);
 	List<CycleDto> getAllCycles();
+	void deleteCycle(Long id);
 
 }

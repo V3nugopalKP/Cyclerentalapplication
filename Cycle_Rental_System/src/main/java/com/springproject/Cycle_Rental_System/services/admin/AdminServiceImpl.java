@@ -44,6 +44,13 @@ public class AdminServiceImpl implements AdminService {
 	public List<CycleDto> getAllCycles() {
 	    return cycleRepository.findAll().stream().map(Cycle::getCycleDto).collect(Collectors.toList());
 	}
+
+	@Override
+	public void deleteCycle(Long id) {
+		cycleRepository.deleteById(id);
+		
+		
+	}
 	
 
 }
