@@ -16,16 +16,17 @@ public class AdminServiceImpl implements AdminService {
 	private final CycleRepository cycleRepository;
 
 	@Override
-	public boolean postCycle(CycleDto cycleDto) throws IOException {
+	public boolean postCycle(CycleDto cycleDto) {
 		try {
 	        Cycle cycle = new Cycle();
 	        cycle.setName(cycleDto.getName());
 	        cycle.setBrand(cycleDto.getBrand());
-	        cycle.setPrice(cycleDto.getPrice());
 	        cycle.setColor(cycleDto.getColor());
+	        cycle.setPrice(cycleDto.getPrice());
 	        cycle.setYear(cycleDto.getYear());
 	        cycle.setType(cycleDto.getType());
 	        cycle.setDescription(cycleDto.getDescription());
+	        cycle.setTransmission(cycleDto.getTransmission());
 	        cycle.setImage(cycleDto.getImage().getBytes());
 	        cycleRepository.save(cycle);
 	        return true;
