@@ -25,12 +25,12 @@ public class Cycle {
     private String type;
 
     private String transmission;
-
     
     private String description;
 
     
     private Long price;
+    
 
     
     private Date year;
