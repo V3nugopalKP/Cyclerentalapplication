@@ -16,6 +16,11 @@ export class AdminService {
       headers: this.createAuthorizationHeader()
     });
   }
+  getAllCycles(): Observable<any> {
+    return this.http.get(BASIC_URL + "/api/admin/cycles", {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
