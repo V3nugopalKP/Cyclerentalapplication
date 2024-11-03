@@ -32,6 +32,7 @@ registerLocaleData(en);
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgZorroImportsModule
+    
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

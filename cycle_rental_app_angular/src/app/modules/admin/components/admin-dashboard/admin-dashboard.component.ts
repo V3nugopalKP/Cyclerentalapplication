@@ -31,12 +31,20 @@ export class AdminDashboardComponent {
     });
   }
 
+  // deleteCycle(id: number) {
+  //   console.log(id);
+  
+  //   this.adminService.deleteCycle(id).subscribe(res => {
+  //     this.getAllCycles();
+  //     this.message.success("Car deleted successfully", { nzDuration: 5000 });
+  //   });
+  // }
   deleteCycle(id: number) {
     console.log(id);
   
     this.adminService.deleteCycle(id).subscribe(res => {
-      this.getAllCycles();
-      this.message.success("Car deleted successfully", { nzDuration: 5000 });
+      this.cycles = this.cycles.filter((cycle: any) => cycle.id !== id);
+      this.message.success("Cycle deleted successfully", { nzDuration: 5000 });
     });
   }
 }

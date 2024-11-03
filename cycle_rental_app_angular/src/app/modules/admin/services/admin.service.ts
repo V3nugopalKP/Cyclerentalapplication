@@ -30,9 +30,9 @@ export class AdminService {
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
-    return authHeaders.set(
-      'Authorization',
-      'Bearer ' + StorageService.getToken()
-    );
+    const token = StorageService.getToken();
+    console.log("Token:", token);  // For debugging, can remove later
+    return authHeaders.set('Authorization', 'Bearer ' + token);
   }
+
 }
