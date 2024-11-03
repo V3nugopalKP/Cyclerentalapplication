@@ -8,6 +8,6 @@ public interface AdminService {
 	boolean postCycle(CycleDto cycleDto);
 	List<CycleDto> getAllCycles();
 	void deleteCycle(Long id);
-	CycleDto getCarById(Long id);
+	CycleDto getCycleById(Long id);
 
 }

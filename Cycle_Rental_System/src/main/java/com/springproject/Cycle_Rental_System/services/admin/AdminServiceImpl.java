@@ -2,9 +2,10 @@ package com.springproject.Cycle_Rental_System.services.admin;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.apache.el.stream.Optional;
+
 
 import org.springframework.stereotype.Service;
 
@@ -55,7 +56,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public CycleDto getCycleById(long id) {
+	public CycleDto getCycleById(Long id) {
 	  Optional<Cycle> optionalCycle = cycleRepository.findById(id);
 	  return optionalCycle.map(Cycle::getCycleDto).orElse(null);
 	
