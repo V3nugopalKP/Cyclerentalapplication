@@ -44,4 +44,10 @@ public class AdminController {
     adminService.deleteCycle(id);
     return ResponseEntity.ok().body(null);
 }
+
+@GetMapping("/cycle/{id}")
+public ResponseEntity<CycleDto> getCycleById(@PathVariable Long id) {
+  CycleDto cycleDto = adminService.getCarById(id);
+  return ResponseEntity.ok(cycleDto);
+}
 }
