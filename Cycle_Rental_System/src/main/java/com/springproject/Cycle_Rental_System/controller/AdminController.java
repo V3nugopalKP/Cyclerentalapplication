@@ -45,9 +45,11 @@ public class AdminController {
     return ResponseEntity.ok().body(null);
 }
 
-@GetMapping("/cycle/{id}")
-public ResponseEntity<CycleDto> getCycleById(@PathVariable Long id) {
-  CycleDto cycleDto = adminService.getCarById(id);
-  return ResponseEntity.ok(cycleDto);
-}
+    @GetMapping("/cycle/{id}")
+    public ResponseEntity<CycleDto> getCycleById(@PathVariable Long id) {
+
+        CycleDto cycleDto = adminService.getCycleById(id);
+        return ResponseEntity.ok(cycleDto);
+
+    }
 }

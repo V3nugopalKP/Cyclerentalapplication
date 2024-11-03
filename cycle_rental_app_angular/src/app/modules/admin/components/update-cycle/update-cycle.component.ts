@@ -23,7 +23,7 @@ export class UpdateCycleComponent {
   }
 
   getCycleById() {
-    this.adminService.getCarById(this.cycleId).subscribe((res) => {
+    this.adminService.getCycleById(this.cycleId).subscribe((res) => {
       console.log(res);
     });
   }

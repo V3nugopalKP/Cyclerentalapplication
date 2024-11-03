@@ -28,9 +28,9 @@ export class AdminService {
     });
   }
 
-  getCarById(id: number): Observable<any> {
-    return this.http.get(BASIC_URL + "/api/admin/car/" + id, {
-      headers: this.createAuthorizationHeader()
+  getCycleById(id: number): Observable<any> {
+    return this.http.get(BASIC_URL + "/api/admin/cycle/" + id, {
+        headers: this.createAuthorizationHeader()
     });
   }
 
