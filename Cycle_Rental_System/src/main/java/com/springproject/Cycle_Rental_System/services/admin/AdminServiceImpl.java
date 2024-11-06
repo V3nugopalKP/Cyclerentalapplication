@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
+import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,6 @@ import com.springproject.Cycle_Rental_System.dto.CycleDto;
 import com.springproject.Cycle_Rental_System.entity.Cycle;
 import com.springproject.Cycle_Rental_System.repository.CycleRepository;
 
-import io.jsonwebtoken.io.IOException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -60,6 +59,29 @@ public class AdminServiceImpl implements AdminService {
 	  Optional<Cycle> optionalCycle = cycleRepository.findById(id);
 	  return optionalCycle.map(Cycle::getCycleDto).orElse(null);
 	
+	}
+	
+	@Override
+	public boolean updateCycle(Long cycleId, CycleDto cycleDto) throws IOException{
+	    Optional<Cycle> optionalCycle = cycleRepository.findById(cycleId);
+	    if (optionalCycle.isPresent()) {
+	        Cycle existingCycle = optionalCycle.get();
+	        if (cycleDto.getImage() != null) {
+	            existingCycle.setImage(cycleDto.getImage().getBytes());
+	        }
+	        existingCycle.setPrice(cycleDto.getPrice());
+	        existingCycle.setYear(cycleDto.getYear());
+	        existingCycle.setType(cycleDto.getType());
+	        existingCycle.setDescription(cycleDto.getDescription());
+	        existingCycle.setTransmission(cycleDto.getTransmission());
+	        existingCycle.setColor(cycleDto.getColor());
+	        existingCycle.setName(cycleDto.getName());
+	        existingCycle.setBrand(cycleDto.getBrand());
+	        cycleRepository.save(existingCycle);
+	        return true;
+	    } else {
+	        return false;
+	    }
 	}
 
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,5 +52,19 @@ public class AdminController {
         CycleDto cycleDto = adminService.getCycleById(id);
         return ResponseEntity.ok(cycleDto);
 
+    }
+    
+    @PutMapping("/cycle/{cycleId}")
+    public ResponseEntity<Void> updateCycle(@PathVariable Long cycleId, @ModelAttribute CycleDto cycleDto) throws IOException {
+        try {
+            boolean success = adminService.updateCycle(cycleId, cycleDto);
+            if (success) {
+                return ResponseEntity.status(HttpStatus.OK).build();
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 }
