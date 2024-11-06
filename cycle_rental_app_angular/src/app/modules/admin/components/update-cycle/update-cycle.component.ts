@@ -20,6 +20,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 export class UpdateCycleComponent {
   isSpinning = false;
   cycleId!: number;
+  imgChanged: boolean =  false;
+  selectedFile: any;
+  imagePreview: string | ArrayBuffer | null;
   existingImage: string | null = null;
   updateForm!: FormGroup;
   listOfOption: Array<{ label: string; value: string }> = [];
@@ -31,7 +34,9 @@ export class UpdateCycleComponent {
   constructor(
     private adminService: AdminService,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private message: NzMessageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -60,4 +65,51 @@ export class UpdateCycleComponent {
       this.updateForm.patchValue(cycleDto);
     });
   }
+}
+updateCycle() {
+  this.isSpinning = true;
+
+  const formData: FormData = new FormData();
+  if (this.imgChanged && this.selectedFile) {
+    formData.append('image', this.selectedFile);
+  }
+
+  formData.append('brand', this.updateForm.get('brand').value);
+  formData.append('name', this.updateForm.get('name').value);
+  formData.append('type', this.updateForm.get('type').value);
+  formData.append('color', this.updateForm.get('color').value);
+  formData.append('year', this.updateForm.get('year').value);
+  formData.append('transmission', this.updateForm.get('transmission').value);
+  formData.append('description', this.updateForm.get('description').value);
+  formData.append('price', this.updateForm.get('price').value);
+
+  console.log(formData);
+  this.adminService.updateCycle(this.carId, formData).subscribe(
+    (res) => {
+      this.isSpinning = false;
+      this.message.success('Cycle updated successfully', { nzDuration: 5000 });
+      this.router.navigateByUrl('/admin/dashboard');
+      console.log(res);
+    },
+    (error) => {
+      this.message.error('Error while updating cycle', { nzDuration: 5000 });
+    }
+  );
+}
+
+onFileSelected(event: any) {
+  this.selectedFile = event.target.files[0];
+  this.imgChanged = true;
+  this.existingImage = null;
+  this.previewImage();
+}
+
+previewImage() {
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    this.imagePreview = reader.result;
+  };
+
+  reader.readAsDataURL(this.selectedFile);
 }

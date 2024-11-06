@@ -33,6 +33,11 @@ export class AdminService {
         headers: this.createAuthorizationHeader()
     });
   }
+  updateCycle(cycleId: number,cycleDto: any): Observable<any> {
+    return this.http.put(BASIC_URL + "/api/admin/cycle/" + cycleId , cycleDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
