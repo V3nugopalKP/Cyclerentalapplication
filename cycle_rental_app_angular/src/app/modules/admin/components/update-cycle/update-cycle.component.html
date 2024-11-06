@@ -7,9 +7,11 @@
                 </div>
                 <form nz-form [formGroup]="updateForm">
                     <div nz-row>
-                        <div *ngIf="existingImage" class="image-preview">
-                            <div class="circle-image">
-                                <img [src]="existingImage" alt="Existing Image" class="preview-image" />
+                        <div class="file-upload-container">
+                            <div *ngIf="existingImage" class="image-preview">
+                                <div class="circle-image">
+                                    <img [src]="existingImage" alt="Existing Image" class="preview-image" />
+                                </div>
                             </div>
                         </div>
                     </div>
