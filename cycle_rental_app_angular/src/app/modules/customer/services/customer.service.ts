@@ -19,6 +19,12 @@ export class CustomerService {
     });
   }
 
+  getCycleById(cycleId: number): Observable<any>{
+    return this.http.get(BASIC_URL + "/api/customer/cycle/" + cycleId, {
+        headers: this.createAuthorizationHeader()
+    })
+}
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     const token = StorageService.getToken();

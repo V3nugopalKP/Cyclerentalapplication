@@ -58,5 +58,12 @@ public class CustomerServiceImpl implements CustomerService {
 	  return false;
 	}
 
+	@Override
+	public CycleDto getCycleById(Long cycleId) {
+		// TODO Auto-generated method stub
+		Optional<Cycle> optionalCycle = cycleRepository.findById(cycleId);
+		return optionalCycle.map(Cycle::getCycleDto).orElse(null);
+	}
+
 
 }

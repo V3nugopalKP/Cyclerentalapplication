@@ -9,4 +9,5 @@ public interface CustomerService {
     List<CycleDto> getAllCycles();
     
     boolean bookACycle(BookACycleDto bookACycleDto);
+    CycleDto getCycleById(Long cycleId);
 }
