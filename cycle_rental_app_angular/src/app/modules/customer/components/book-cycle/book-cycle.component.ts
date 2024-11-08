@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { ActivatedRoute } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-book-cycle',
   standalone: true,
-  imports: [],
+  imports: [RouterModule,CommonModule],
   templateUrl: './book-cycle.component.html',
   styleUrls: ['./book-cycle.component.scss']  // Note the plural: styleUrls
 })
 export class BookCycleComponent {
   cycleId!: number;
-  car: any;
+  cycle: any;
   processedImage: any;
 
   constructor(private service: CustomerService,
@@ -27,7 +29,7 @@ export class BookCycleComponent {
       this.service.getCycleById(this.cycleId).subscribe((res) => {
           console.log(res);
           this.processedImage = 'data:image/jpeg;base64,' + res.returnedImage;
-          this.car = res;
+          this.cycle = res;
       });
   }
 }
