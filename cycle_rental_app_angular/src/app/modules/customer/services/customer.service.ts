@@ -25,6 +25,12 @@ export class CustomerService {
     })
 }
 
+bookACycle(bookACycleDto: any): Observable<any> {
+  return this.http.post(BASIC_URL + "/api/customer/cycle/book", bookACycleDto, {
+      headers: this.createAuthorizationHeader()
+  });
+}
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     const token = StorageService.getToken();
