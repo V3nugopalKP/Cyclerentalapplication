@@ -28,6 +28,16 @@ export class StorageService {
     }
   }
 
+  static getUserId(): string {
+    const user = this.getUser();
+  
+    if (user === null) {
+      return '';
+    }
+  
+    return user.id;
+  }
+
   static getToken(): string | null {
     return this.isWindowDefined() ? window.localStorage.getItem(TOKEN) : null;
   }
