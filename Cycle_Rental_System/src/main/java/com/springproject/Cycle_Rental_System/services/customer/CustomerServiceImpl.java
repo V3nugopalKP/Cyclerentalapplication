@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Override
 	public boolean bookACycle(BookACycleDto bookACycleDto) {
-	  Optional<Cycle> optionalCycle = cycleRepository.findById(bookACycleDto.getCardId());
+	  Optional<Cycle> optionalCycle = cycleRepository.findById(bookACycleDto.getCycleId());
 	  Optional<User> optionalUser = userRepository.findById(bookACycleDto.getUserId());
 
 	  if (optionalCycle.isPresent() && optionalUser.isPresent()) {

@@ -43,8 +43,8 @@ public class CustomerController {
 
     @GetMapping("/cycle/{cycleId}")
     public ResponseEntity<CycleDto> getCycleById(@PathVariable Long cycleId){
-    CycleDto cycleDto = customerService.getCycleById(cycleId);
-    if(cycleDto == null) return ResponseEntity.notFound().build();
-    return ResponseEntity.ok(cycleDto);
-}
+	    CycleDto cycleDto = customerService.getCycleById(cycleId);
+	    if(cycleDto == null) return ResponseEntity.notFound().build();
+	    return ResponseEntity.ok(cycleDto);
+	}
 }

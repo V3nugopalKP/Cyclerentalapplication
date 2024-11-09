@@ -31,7 +31,7 @@ export class StorageService {
   static getUserId(): string {
     const user = this.getUser();
   
-    if (user === null) {
+    if (user == null) {
       return '';
     }
   
