@@ -14,6 +14,6 @@ public class BookACycleDto {
   private Long days;
   private Long price;
   private BookCycleStatus bookCycleStatus;
-  private Long cardId; // Assuming card refers to a payment method, not a physical card
+  private Long cycleId; // Assuming card refers to a payment method, not a physical card
   private Long userId;
 }
