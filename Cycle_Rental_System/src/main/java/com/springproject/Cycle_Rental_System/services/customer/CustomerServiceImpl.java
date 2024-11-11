@@ -45,6 +45,10 @@ public class CustomerServiceImpl implements CustomerService {
 	    bookACycle.setUser(optionalUser.get());
 	    bookACycle.setCycle(existingCycle);
 	    bookACycle.setBookCycleStatus(BookCycleStatus.PENDING);
+	    
+	    // Set fromDate and toDate
+        bookACycle.setFromDate(bookACycleDto.getFromDate());
+        bookACycle.setToDate(bookACycleDto.getToDate());
 
 	    long diffInMilliseconds = bookACycleDto.getToDate().getTime() - bookACycleDto.getFromDate().getTime();
 	    long days = TimeUnit.MILLISECONDS.toDays(diffInMilliseconds);
@@ -63,6 +67,11 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		Optional<Cycle> optionalCycle = cycleRepository.findById(cycleId);
 		return optionalCycle.map(Cycle::getCycleDto).orElse(null);
+	}
+
+	@Override
+	public List<BookACycleDto> getBookingsByUserId(Long userId) {
+		return bookACycleRepository.findAllByUserId(userId).stream().map(BookACycle::getBookACycleDto).collect(Collectors.toList());
 	}
 
 

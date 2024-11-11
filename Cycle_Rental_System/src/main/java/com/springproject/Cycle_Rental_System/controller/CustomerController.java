@@ -47,4 +47,11 @@ public class CustomerController {
 	    if(cycleDto == null) return ResponseEntity.notFound().build();
 	    return ResponseEntity.ok(cycleDto);
 	}
+    
+    @GetMapping("/cycle/bookings/{userId}")
+    public ResponseEntity<List<BookACycleDto>> getBookingsByUserId(@PathVariable Long userId){
+    	return ResponseEntity.ok(customerService.getBookingsByUserId(userId));
+    }
+
+
 }

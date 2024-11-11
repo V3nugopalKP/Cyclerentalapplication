@@ -2,15 +2,24 @@ package com.springproject.Cycle_Rental_System.services.admin;
 
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import java.io.IOException;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import com.springproject.Cycle_Rental_System.dto.BookACycleDto;
 import com.springproject.Cycle_Rental_System.dto.CycleDto;
+import com.springproject.Cycle_Rental_System.dto.CycleDtoListDto;
+import com.springproject.Cycle_Rental_System.dto.SearchCycleDto;
+import com.springproject.Cycle_Rental_System.entity.BookACycle;
 import com.springproject.Cycle_Rental_System.entity.Cycle;
+import com.springproject.Cycle_Rental_System.enums.BookCycleStatus;
+import com.springproject.Cycle_Rental_System.repository.BookACycleRepository;
 import com.springproject.Cycle_Rental_System.repository.CycleRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,6 +28,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
 	private final CycleRepository cycleRepository;
+	private final BookACycleRepository bookACycleRepository;
 
 	@Override
 	public boolean postCycle(CycleDto cycleDto) {
@@ -84,9 +94,51 @@ public class AdminServiceImpl implements AdminService {
 	    }
 	}
 
-
-
+	@Override
+	public List<BookACycleDto> getBookings() {
+		return bookACycleRepository.findAll().stream().map(BookACycle::getBookACycleDto).collect(Collectors.toList());
+	}
+	
+	@Override
+	public boolean changeBookingStatus(Long bookingId, String status) {
+	    Optional<BookACycle> optionalBookACycle = bookACycleRepository.findById(bookingId);
+	    if (optionalBookACycle.isPresent()) {
+	        BookACycle existingBookACycle = optionalBookACycle.get();
+	        if (Objects.equals(status, "Approve"))
+	            existingBookACycle.setBookCycleStatus(BookCycleStatus.APPROVED);
+	        else
+	            existingBookACycle.setBookCycleStatus(BookCycleStatus.REJECTED);
+	        bookACycleRepository.save(existingBookACycle);
+	        return true;
+	    }
+	    return false;
+	}
 
 	
+	@Override
+	public CycleDtoListDto searchCycle(SearchCycleDto searchCycleDto) {
+	    Cycle cycle = new Cycle();
+	    cycle.setBrand(searchCycleDto.getBrand());
+	    cycle.setType(searchCycleDto.getType());
+	    cycle.setTransmission(searchCycleDto.getTransmission());
+	    cycle.setColor(searchCycleDto.getColor());
+	    
+	    ExampleMatcher exampleMatcher = ExampleMatcher.matchingAll()
+	        .withMatcher("brand", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+	        .withMatcher("type", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+	        .withMatcher("transmission", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+	        .withMatcher("color", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+	    
+	    Example<Cycle> cycleExample = Example.of(cycle, exampleMatcher);
+	    List<Cycle> cycleList = cycleRepository.findAll(cycleExample);
+	    
+	    CycleDtoListDto cycleDtoListDto = new CycleDtoListDto();
+	    cycleDtoListDto.setCycleDtoList(cycleList.stream().map(Cycle::getCycleDto).collect(Collectors.toList()));
+	    
+	    return cycleDtoListDto;
+	}
+
+	
+
 
 }
