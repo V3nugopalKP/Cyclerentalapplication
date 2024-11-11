@@ -16,4 +16,6 @@ public class BookACycleDto {
   private BookCycleStatus bookCycleStatus;
   private Long cycleId; // Assuming card refers to a payment method, not a physical card
   private Long userId;
+  private String username;
+  private String email;
 }

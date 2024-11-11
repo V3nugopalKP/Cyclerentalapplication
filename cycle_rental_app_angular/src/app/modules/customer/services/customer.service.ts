@@ -23,13 +23,20 @@ export class CustomerService {
     return this.http.get(BASIC_URL + "/api/customer/cycle/" + cycleId, {
         headers: this.createAuthorizationHeader()
     })
-}
+  }
 
-bookACycle(bookACycleDto: any): Observable<any> {
-  return this.http.post(BASIC_URL + "/api/customer/cycle/book", bookACycleDto, {
-      headers: this.createAuthorizationHeader()
-  });
-}
+  bookACycle(bookACycleDto: any): Observable<any> {
+    return this.http.post(BASIC_URL + "/api/customer/cycle/book", bookACycleDto, {
+        headers: this.createAuthorizationHeader()
+    });
+  }
+
+  getBookingsByUserID(): Observable<any> {
+    return this.http.get(BASIC_URL+ "/api/customer/cycle/bookings/" + StorageService.getUserId(),{
+    headers: this.createAuthorizationHeader()
+  })
+  }
+   
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();

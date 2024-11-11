@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.springproject.Cycle_Rental_System.dto.BookACycleDto;
 import com.springproject.Cycle_Rental_System.enums.BookCycleStatus;
 
 import jakarta.persistence.Entity;
@@ -26,6 +27,7 @@ public class BookACycle {
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Long id;
 	
+	  
 	  private Date fromDate;
 	  private Date toDate;
 	  private Long days;
@@ -44,5 +46,18 @@ public class BookACycle {
 	  @JsonIgnore
 	  private Cycle cycle;
 	
-	  // Getters and Setters (omitted for brevity)
+	  public BookACycleDto getBookACycleDto() {
+		    BookACycleDto bookACycleDto = new BookACycleDto();
+		    bookACycleDto.setId(id);
+		    bookACycleDto.setDays(days);
+		    bookACycleDto.setBookCycleStatus(bookCycleStatus);
+		    bookACycleDto.setPrice(price);
+		    bookACycleDto.setToDate(toDate);
+		    bookACycleDto.setFromDate(fromDate);
+		    bookACycleDto.setEmail(user.getEmail());
+		    bookACycleDto.setUsername(user.getName());
+		    bookACycleDto.setUserId(user.getId());
+		    bookACycleDto.setCycleId(cycle.getId());
+		    return bookACycleDto;
+		}
 }

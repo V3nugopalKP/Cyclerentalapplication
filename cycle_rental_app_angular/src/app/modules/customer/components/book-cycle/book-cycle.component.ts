@@ -63,13 +63,14 @@ export class BookCycleComponent {
   bookACycle(data: any) {
     console.log(data);
     this.isSpinning = true;
-  
-    let bookACycleDto = {
-      toDate: data.toDate,
-      fromDate: data.fromDate,
+    
+    const bookACycleDto = {
+      toDate: data.toDate ? data.toDate.toISOString().split('T')[0] : null,
+      fromDate: data.fromDate ? data.fromDate.toISOString().split('T')[0] : null,
       userId: StorageService.getUserId(),
       cycleId: this.cycleId
     };
+    
     console.log(bookACycleDto);
   
     this.service.bookACycle(bookACycleDto).subscribe(res => {
@@ -78,6 +79,8 @@ export class BookCycleComponent {
       this.router.navigateByUrl("/customer/dashboard");
     }, error => {
       this.message.error("Something went wrong", { nzDuration: 5000 });
+      this.isSpinning = false;
     });
   }
+  
 }

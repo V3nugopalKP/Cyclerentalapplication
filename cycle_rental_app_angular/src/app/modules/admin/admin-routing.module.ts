@@ -3,13 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { PostCycleComponent } from './components/post-cycle/post-cycle.component';
 import { UpdateCycleComponent } from './components/update-cycle/update-cycle.component';
+import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
 
 
 
 const routes: Routes = [
   { path: "dashboard", component: AdminDashboardComponent },
   { path: "cycle", component: PostCycleComponent },
-  { path: "cycle/:id","component": UpdateCycleComponent}
+  { path: "cycle/:id","component": UpdateCycleComponent},
+  {path: "bookings", component: GetBookingsComponent}
+
 
 ];
 

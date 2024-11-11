@@ -1,10 +1,11 @@
-<div style="background-color: #F8F8F8; min-height: 91vh;">
+<div style="background-color: #000; min-height: 100vh;">
     <div style="padding-top: 10px;"></div>
     <div style="margin-top: 10px;" class="child" *ngFor="let cycle of cycles">
         <div nz-row>
             <div nz-col nzSpan="8">
                 <img class="profile" style="height: 130px; width: 200px; border-radius: 10px;" [src]="cycle.processedImg" alt="profile" />
             </div>
+            <br>
             <div nz-col nzSpan="16">
                 <h2 style="cursor: pointer; color: #108ee9;">
                     {{cycle.brand}} {{cycle.name}}
