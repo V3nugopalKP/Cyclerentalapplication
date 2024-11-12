@@ -50,6 +50,13 @@ export class AdminService {
       headers: this.createAuthorizationHeader()
     });
   }
+
+  searchCycle(searchCycleDto: any): Observable<any> {
+    return this.http.post(BASIC_URL + "/api/admin/cycle/search", searchCycleDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+  
   
   
 

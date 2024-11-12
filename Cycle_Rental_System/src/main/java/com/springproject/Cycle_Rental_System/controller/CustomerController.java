@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springproject.Cycle_Rental_System.dto.BookACycleDto;
 import com.springproject.Cycle_Rental_System.dto.CycleDto;
+import com.springproject.Cycle_Rental_System.dto.SearchCycleDto;
 import com.springproject.Cycle_Rental_System.services.customer.CustomerService;
 
 import java.util.List;
@@ -53,5 +54,9 @@ public class CustomerController {
     	return ResponseEntity.ok(customerService.getBookingsByUserId(userId));
     }
 
+    @PostMapping("/cycle/search")
+    public ResponseEntity<?> searchCycle(@RequestBody SearchCycleDto searchCycleDto) {
+        return ResponseEntity.ok(customerService.searchCycle(searchCycleDto));
+    }
 
 }

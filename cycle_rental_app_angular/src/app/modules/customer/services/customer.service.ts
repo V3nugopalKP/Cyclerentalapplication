@@ -36,7 +36,12 @@ export class CustomerService {
     headers: this.createAuthorizationHeader()
   })
   }
-   
+  
+  searchCycle(searchCycleDto: any): Observable<any> {
+    return this.http.post(BASIC_URL + "/api/customer/cycle/search", searchCycleDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();

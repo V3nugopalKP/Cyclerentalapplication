@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { PostCycleComponent } from './components/post-cycle/post-cycle.component';
 import { UpdateCycleComponent } from './components/update-cycle/update-cycle.component';
 import { GetBookingsComponent } from './components/get-bookings/get-bookings.component';
+import { SearchCycleComponent } from './components/search-cycle/search-cycle.component';
 
 
 
@@ -11,7 +12,9 @@ const routes: Routes = [
   { path: "dashboard", component: AdminDashboardComponent },
   { path: "cycle", component: PostCycleComponent },
   { path: "cycle/:id","component": UpdateCycleComponent},
-  {path: "bookings", component: GetBookingsComponent}
+  {path: "bookings", component: GetBookingsComponent},
+  { path: "search", component: SearchCycleComponent },
+
 
 
 ];

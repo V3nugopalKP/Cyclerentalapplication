@@ -5,10 +5,14 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import com.springproject.Cycle_Rental_System.dto.BookACycleDto;
 import com.springproject.Cycle_Rental_System.dto.CycleDto;
+import com.springproject.Cycle_Rental_System.dto.CycleDtoListDto;
+import com.springproject.Cycle_Rental_System.dto.SearchCycleDto;
 import com.springproject.Cycle_Rental_System.entity.BookACycle;
 import com.springproject.Cycle_Rental_System.entity.Cycle;
 import com.springproject.Cycle_Rental_System.entity.User;
@@ -72,6 +76,30 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public List<BookACycleDto> getBookingsByUserId(Long userId) {
 		return bookACycleRepository.findAllByUserId(userId).stream().map(BookACycle::getBookACycleDto).collect(Collectors.toList());
+	}
+
+	@Override
+	public CycleDtoListDto searchCycle(SearchCycleDto searchCycleDto) {
+		// TODO Auto-generated method stub
+			    Cycle cycle = new Cycle();
+	    cycle.setBrand(searchCycleDto.getBrand());
+	    cycle.setType(searchCycleDto.getType());
+	    cycle.setTransmission(searchCycleDto.getTransmission());
+	    cycle.setColor(searchCycleDto.getColor());
+	    
+	    ExampleMatcher exampleMatcher = ExampleMatcher.matchingAll()
+	        .withMatcher("brand", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+	        .withMatcher("type", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+	        .withMatcher("transmission", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+	        .withMatcher("color", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+	    
+	    Example<Cycle> cycleExample = Example.of(cycle, exampleMatcher);
+	    List<Cycle> cycleList = cycleRepository.findAll(cycleExample);
+	    
+	    CycleDtoListDto cycleDtoListDto = new CycleDtoListDto();
+	    cycleDtoListDto.setCycleDtoList(cycleList.stream().map(Cycle::getCycleDto).collect(Collectors.toList()));
+	    
+	    return cycleDtoListDto;
 	}
 
 
