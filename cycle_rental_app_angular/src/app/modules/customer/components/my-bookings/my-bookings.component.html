@@ -1,29 +1,36 @@
-<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
-    <nz-table #basicTable [nzData]="bookings" [nzPageSize]="20" [nzShowPagination]="'false'"> 
-        <thead>
-            <tr>
-                <th style="font-weight: bolder; color: blue;">From</th>
-                <th style="font-weight: bolder; color: blue;">To</th>
-                <th style="font-weight: bolder; color: blue;">Days</th>
-                <th style="font-weight: bolder; color: blue;">Price</th>
-                <th style="font-weight: bolder; color: blue;">Status</th>
-            </tr> 
-        </thead>
-        <tbody>
-            <tr *ngFor="let booking of basicTable.data">
-                <td>{{booking.fromDate | date: 'MMM d, y'}}</td> 
-                <td>{{booking.toDate | date: 'MMM d, y'}}</td>
-                <td>{{booking.days}}</td>
-                <td>{{booking.price}}</td>
-                <td>
-                    <strong [ngStyle]="{
-                        'color': booking.bookCycleStatus === 'APPROVED' ? 'green' : 
-                                 booking.bookCycleStatus === 'REJECTED' ? 'blue' : 'red'
-                    }">
-                        {{ booking.bookCycleStatus }}
-                    </strong>                    
-                </td>
-            </tr>
-        </tbody>
-    </nz-table>
-</nz-spin>
+<div style="background-color: #000; color: #fff; min-height: 100vh; padding: 20px;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..." style="color: #fff;">
+        <nz-table #basicTable [nzData]="bookings" [nzPageSize]="20" [nzShowPagination]="'false'" style="width: 100%; background-color: #000; color: #fff;">
+            <thead>
+                <tr style="background-color: #000;">
+                    <th style="font-weight: bolder; color: #fff; text-align: left; background-color: #000;">From</th>
+                    <th style="font-weight: bolder; color: #fff; text-align: left; background-color: #000;">To</th>
+                    <th style="font-weight: bolder; color: #fff; text-align: left; background-color: #000;">Days</th>
+                    <th style="font-weight: bolder; color: #fff; text-align: left; background-color: #000;">Price</th>
+                    <th style="font-weight: bolder; color: #fff; text-align: left; background-color: #000;">Status</th>
+                </tr> 
+            </thead>
+            <tbody>
+                <tr *ngFor="let booking of basicTable.data" 
+                    [ngStyle]="{'background-color': '#000', 'color': '#fff'}"
+                    (mouseenter)="booking.hover = true" 
+                    (mouseleave)="booking.hover = false">
+                    <td [style.color]="booking.hover ? 'black' : 'white'">{{ booking.fromDate | date: 'MMM d, y' }}</td> 
+                    <td [style.color]="booking.hover ? 'black' : 'white'">{{ booking.toDate | date: 'MMM d, y' }}</td>
+                    <td [style.color]="booking.hover ? 'black' : 'white'">{{ booking.days }}</td>
+                    <td [style.color]="booking.hover ? 'black' : 'white'">{{ booking.price }}</td>
+                    <td>
+                        <strong [ngStyle]="{
+                            'color': booking.hover ? 'black' : 
+                                      (booking.bookCycleStatus === 'APPROVED' ? 'green' :
+                                       booking.bookCycleStatus === 'REJECTED' ? 'red' :
+                                       'orange')
+                        }">
+                            {{ booking.bookCycleStatus }}
+                        </strong>                    
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </nz-spin>
+</div>

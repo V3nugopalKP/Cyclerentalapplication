@@ -5,58 +5,71 @@ body, html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* Container for grid layout */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+  gap: 20px;
+  padding: 20px;
+  max-width: 90vw; /* Ensures container stays within viewport */
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Card Styling */
-.child, .row {
+.child {
   display: flex;
-  padding: 20px;
-  width: 780px;
-  background: #1c1c1c; /* Slightly lighter black for cards */
+  flex-direction: column;
+  padding: 15px;
+  background: #1c1c1c;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  margin: 15px auto;
-  position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
   &:hover {
-    transform: scale(1.03); /* Pop effect */
-    box-shadow: 0px 0px 15px 3px #007bff; /* Blue glow */
+    transform: scale(1.03);
+    box-shadow: 0px 0px 15px 3px #007bff;
   }
 }
 
-/* Left Side - Image */
+/* Image Container */
 .child img.profile {
-  height: 130px;
-  width: 200px;
+  width: 100%;
+  max-height: 150px;
   border-radius: 10px;
-  object-fit: cover;
+  object-fit: contain; /* Ensures the entire image fits within its container */
   border: 1px solid #333;
-  margin-right: 20px;
+  margin-bottom: 10px;
 }
 
-/* Right Side - Content */
+/* Content Container */
 .child .content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   color: #e0e0e0;
   width: 100%;
+  flex-grow: 1;
 }
 
 /* Cycle Title */
 .child h2 {
   color: #e0e0e0;
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 600;
-  margin-bottom: 10px;
-  text-align: left; /* Center title in middle section */
+  margin-bottom: 8px;
 }
 
 /* Details List */
 .child p, .child h5 {
   color: #b0b0b0;
   margin: 5px 0;
+  font-size: 0.9em;
+  line-height: 1.3;
 }
 
 /* Book Button Styling */
@@ -65,16 +78,16 @@ body, html {
   color: #ffffff;
   border: 1px solid #007bff;
   border-radius: 5px;
-  padding: 8px 16px;
-  font-size: 0.9em;
+  padding: 6px 12px;
+  font-size: 0.8em;
   cursor: pointer;
-  float: right; /* Align to bottom-right */
+  align-self: center; /* Center-aligns the button within the card */
   transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
   
   &:hover {
-    background-color: transparent; /* Make background transparent on hover */
-    color: #007bff; /* Text turns blue */
-    border: 1px solid #007bff; /* Blue border */
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
   }
 }
 
@@ -82,5 +95,5 @@ body, html {
 .child hr {
   border: none;
   border-top: 1px solid #333;
-  margin: 10px 0;
+  margin: 8px 0;
 }
