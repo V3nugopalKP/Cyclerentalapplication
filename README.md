@@ -50,7 +50,6 @@ The **Cycle Rental System** simplifies bicycle rentals for customers and provide
 - **Additional Tools**:
   - JWT for secure authentication and authorization
   - RESTful APIs for efficient communication between frontend and backend
-  - Bootstrap or Material UI for styling (if applicable)
 
 ---
 
@@ -95,10 +94,13 @@ complete this
      spring.datasource.password=your_password
      ```
    - Install lombok in your system.
+     ```bash
+     java -jar lombok.jar
+     ```
      
    - Build and run the Spring Boot application:
      ```bash
-     java -jar lombok.jar
+     mvn spring-boot:run
      ```
    - The backend will run at `http://localhost:8080`.
 
