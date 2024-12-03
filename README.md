@@ -156,7 +156,7 @@ complete this
 
 - **Jaideep M**  
   - **Role**: Frontend Developer 
-  - [GitHub Profile](https://github.com/person3-github)  
+  - [GitHub Profile](https://github.com/jaideepmanat)  
 
 - **Hari Govind Rajesh**  
   - **Role**: Frontend developer  
