@@ -94,9 +94,11 @@ complete this
      spring.datasource.username=your_username
      spring.datasource.password=your_password
      ```
+   - Install lombok in your system.
+     
    - Build and run the Spring Boot application:
      ```bash
-     mvn spring-boot:run
+     java -jar lombok.jar
      ```
    - The backend will run at `http://localhost:8080`.
 
@@ -148,7 +150,7 @@ complete this
 
 - **Sreeram Nair**  
   - **Role**: Backend Developer  
-  - [GitHub Profile](https://github.com/person2-github)  
+  - [GitHub Profile](https://github.com/SREERAM2612)  
 
 - **Jaideep M**  
   - **Role**: Frontend Developer 
